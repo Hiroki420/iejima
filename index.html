@@ -1,38 +1,347 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>伊江島マラソン2025 参加者一覧 & スケジュール</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 伊江島マラソン＆観光</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 30px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.ie-jima.com/wp-content/uploads/2019/02/DSC_0204.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Section styles */
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        /* Participant styles */
+        .participants {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .participant {
+            text-align: center;
+            width: 150px;
+        }
+        
+        .participant img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .participant h3 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .participant p {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+        
+        /* Schedule styles */
+        .schedule {
+            margin-bottom: 30px;
+        }
+        
+        .day {
+            margin-bottom: 30px;
+        }
+        
+        .day h3 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        
+        .event {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        
+        .event::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #3498db;
+            z-index: 2;
+        }
+        
+        .time {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .description {
+            margin-bottom: 5px;
+        }
+        
+        .location {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .participant {
+                width: 120px;
+            }
+            
+            .participant img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>伊江島マラソン2025 参加者一覧</h1>
-  <div id="participants">
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/images/michishita.jpeg" alt="道下さん">
-      <h2>道下</h2>
-      <p>県立南部医療センター・子ども医療センター<br>マスターオブパブリックヘルスナース</p>
+    <div class="container">
+        <header>
+            <h1>2025 伊江島マラソン＆観光</h1>
+            <p class="subtitle">2025年4月12日～4月13日</p>
+        </header>
+        
+        <section class="section">
+            <h2>参加メンバー</h2>
+            <div class="participants">
+                <div class="participant">
+                    <img src="https://via.placeholder.com/150" alt="マスターオブパブリックヘルスナース道下">
+                    <h3>道下</h3>
+                    <p>県立南部医療センター・子ども医療センター</p>
+                    <p>マスターオブパブリックヘルスナース</p>
+                </div>
+                <div class="participant">
+                    <img src="https://via.placeholder.com/150" alt="ハートライフ病院　看護師　ベイビー井上">
+                    <h3>ベイビー井上</h3>
+                    <p>ハートライフ病院</p>
+                    <p>看護師</p>
+                </div>
+                <div class="participant">
+                    <img src="https://via.placeholder.com/150" alt="プロヘブバンプレイヤー　大山">
+                    <h3>大山</h3>
+                    <p>プロヘブバンプレイヤー</p>
+                </div>
+                <div class="participant">
+                    <img src="https://via.placeholder.com/150" alt="応援団長　若頭長嶺">
+                    <h3>若頭長嶺</h3>
+                    <p>応援団長</p>
+                </div>
+                <div class="participant">
+                    <img src="https://via.placeholder.com/150" alt="フサフサナースあむろ">
+                    <h3>あむろ</h3>
+                    <p>フサフサナース</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>スケジュール</h2>
+            <div class="schedule">
+                <div class="day">
+                    <h3>4月12日（土）</h3>
+                    <div class="timeline">
+                        <div class="event">
+                            <div class="time">9:30</div>
+                            <div class="description">本部港集合</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">10:00</div>
+                            <div class="description">本部港フェリー出発</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">10:30</div>
+                            <div class="description">伊江島到着　会場受付　腹ごしらえ　ウォーミングアップ</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">13:00</div>
+                            <div class="description">ハーフマラソンスタート</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">16:00</div>
+                            <div class="description">ハーフマラソン制限時間終了</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">17:00</div>
+                            <div class="description">伊江島フェリー出発</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">17:30</div>
+                            <div class="description">本部港着</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">18:00</div>
+                            <div class="description">本部港からホテルへ移動</div>
+                            <div class="location">ホテルマハイナ ウェルネスリゾート オキナワ (移動時間：15分)</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">18:30</div>
+                            <div class="description">チェックイン　交代で風呂に入る</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">19:30</div>
+                            <div class="description">居酒屋　美ら海太郎で打ち上げ(営業終了22時)</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">22:00</div>
+                            <div class="description">コンビニに買い出ししてホテルへ戻る～自由行動</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day">
+                    <h3>4月13日（日）</h3>
+                    <div class="timeline">
+                        <div class="event">
+                            <div class="time">8:30</div>
+                            <div class="description">起床　身支度</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">9:30</div>
+                            <div class="description">カフェスコール(もしくはスタバかポータマ)でモーニング</div>
+                            <div class="location">海洋博公園　(9：30営業開始～)</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">10:30</div>
+                            <div class="description">海洋博公園でグラウンドゴルフ(※無料)</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">13:00</div>
+                            <div class="description">ゴルフ終了　古宇利島へ移動(移動時間：30分)</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">13:30</div>
+                            <div class="description">古宇利島　しらさ食堂でランチ</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">14:30</div>
+                            <div class="description">本部　アイスクリンカフェに移動　(移動時間：30分)</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">15:00</div>
+                            <div class="description">カフェでアイス食べる</div>
+                        </div>
+                        <div class="event">
+                            <div class="time">16:00</div>
+                            <div class="description">帰宅</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>地図</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114187.70302895741!2d127.65882975!3d26.71548375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34e472b0f78b5293%3A0xb0b7d1f883da0e0a!2z5Lqs5rKZ5YWQ5Lya5b2p6YGT5Z-O6LC35Luj5rS-5Yil5omA!5e0!3m2!1sja!2sjp!4v1709800785730!5m2!1sja!2sjp" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 伊江島マラソン＆観光</p>
+        </footer>
     </div>
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/images/inoue.jpeg" alt="井上さん">
-      <h2>ベイビー井上</h2>
-      <p>ハートライフ病院<br>看護師</p>
-    </div>
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/images/oyama.jpeg" alt="大山さん">
-      <h2>大山</h2>
-      <p>プロヘブバンプレイヤー</p>
-    </div>
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/images/choure.jpeg" alt="長嶺さん">
-      <h2>若頭長嶺</h2>
-      <p>応援団長</p>
-    </div>
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/images/amuro.jpeg" alt="あむろさん">
-      <h2>あむろ</h2>
-      <p>フサフサナース</p>
-    </div>
-  </div>
 </body>
 </html>
