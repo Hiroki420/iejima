@@ -13,7 +13,7 @@
         }
         
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f9f9f9;
@@ -33,9 +33,27 @@
             text-align: center;
             border-radius: 8px 8px 0 0;
             margin-bottom: 30px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.ie-jima.com/wp-content/uploads/2019/02/DSC_0204.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/600/300');
             background-size: cover;
             background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(26, 188, 156, 0.7), rgba(41, 128, 185, 0.7));
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
         }
         
         h1 {
@@ -78,6 +96,11 @@
         .participant {
             text-align: center;
             width: 150px;
+            transition: transform 0.3s ease;
+        }
+        
+        .participant:hover {
+            transform: translateY(-5px);
         }
         
         .participant img {
@@ -87,6 +110,14 @@
             object-fit: cover;
             border: 4px solid #3498db;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .participant:hover img {
+            transform: scale(1.05);
+            border-color: #2ecc71;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
         
         .participant h3 {
@@ -114,6 +145,7 @@
             padding: 10px 15px;
             border-radius: 5px;
             margin-bottom: 15px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
         }
         
         .timeline {
@@ -136,6 +168,11 @@
             position: relative;
             margin-bottom: 25px;
             padding-left: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .event:hover {
+            transform: translateX(5px);
         }
         
         .event::before {
@@ -148,6 +185,11 @@
             border-radius: 50%;
             background-color: #3498db;
             z-index: 2;
+            transition: background-color 0.3s ease;
+        }
+        
+        .event:hover::before {
+            background-color: #2ecc71;
         }
         
         .time {
@@ -166,13 +208,35 @@
             font-size: 0.9rem;
         }
         
+        /* Map styles */
+        .map {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
         /* Footer */
         footer {
             text-align: center;
             padding: 20px;
             color: #7f8c8d;
             font-size: 0.9rem;
+            margin-top: 30px;
         }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
         
         /* Responsive */
         @media (max-width: 768px) {
@@ -196,43 +260,73 @@
             .timeline {
                 padding-left: 30px;
             }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .participants {
+                justify-content: center;
+            }
+            
+            .day h3 {
+                font-size: 1rem;
+            }
+            
+            .timeline::before {
+                left: 12px;
+            }
+            
+            .event::before {
+                left: -38px;
+                width: 12px;
+                height: 12px;
+            }
+            
+            .time {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>2025 伊江島マラソン＆観光</h1>
-            <p class="subtitle">2025年4月12日～4月13日</p>
+            <div class="header-content">
+                <h1>2025 伊江島マラソン＆観光</h1>
+                <p class="subtitle">2025年4月12日～4月13日</p>
+            </div>
         </header>
         
         <section class="section">
             <h2>参加メンバー</h2>
             <div class="participants">
                 <div class="participant">
-                    <img src="https://via.placeholder.com/150" alt="マスターオブパブリックヘルスナース道下">
+                    <img src="/api/placeholder/150/150" alt="マスターオブパブリックヘルスナース道下">
                     <h3>道下</h3>
                     <p>県立南部医療センター・子ども医療センター</p>
                     <p>マスターオブパブリックヘルスナース</p>
                 </div>
                 <div class="participant">
-                    <img src="https://via.placeholder.com/150" alt="ハートライフ病院　看護師　ベイビー井上">
+                    <img src="/api/placeholder/150/150" alt="ハートライフ病院　看護師　ベイビー井上">
                     <h3>ベイビー井上</h3>
                     <p>ハートライフ病院</p>
                     <p>看護師</p>
                 </div>
                 <div class="participant">
-                    <img src="https://via.placeholder.com/150" alt="プロヘブバンプレイヤー　大山">
+                    <img src="/api/placeholder/150/150" alt="プロヘブバンプレイヤー　大山">
                     <h3>大山</h3>
                     <p>プロヘブバンプレイヤー</p>
                 </div>
                 <div class="participant">
-                    <img src="https://via.placeholder.com/150" alt="応援団長　若頭長嶺">
+                    <img src="/api/placeholder/150/150" alt="応援団長　若頭長嶺">
                     <h3>若頭長嶺</h3>
                     <p>応援団長</p>
                 </div>
                 <div class="participant">
-                    <img src="https://via.placeholder.com/150" alt="フサフサナースあむろ">
+                    <img src="/api/placeholder/150/150" alt="フサフサナースあむろ">
                     <h3>あむろ</h3>
                     <p>フサフサナース</p>
                 </div>
@@ -336,11 +430,13 @@
         
         <section class="section">
             <h2>地図</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114187.70302895741!2d127.65882975!3d26.71548375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34e472b0f78b5293%3A0xb0b7d1f883da0e0a!2z5Lqs5rKZ5YWQ5Lya5b2p6YGT5Z-O6LC35Luj5rS-5Yil5omA!5e0!3m2!1sja!2sjp!4v1709800785730!5m2!1sja!2sjp" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map">
+                <img src="/api/placeholder/800/400" alt="伊江島と本部周辺の地図" style="width:100%; height:auto;">
+            </div>
         </section>
         
         <footer>
-            <p>&copy; 2025 伊江島マラソン＆観光</p>
+            <p>&copy; 2025 伊江島マラソン＆観光 実行委員会</p>
         </footer>
     </div>
 </body>
